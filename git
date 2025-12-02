@@ -1,0 +1,13 @@
+git clone <repo-url>
+cd repo
+git checkout -b feature-update
+touch notes.txt
+echo "This is a new feature update." >> notes.txt
+git add notes.txt
+git commit -m "Added notes.txt"
+git format-patch -1
+git checkout main
+git apply 0001-Added-notes.txt.patch
+git add .
+git commit -m "Applied patch from feature-update"
+git push origin main
